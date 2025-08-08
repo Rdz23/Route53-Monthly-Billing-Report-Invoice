@@ -1,0 +1,23 @@
+Additional tips:
+1. S3 Bucket Policy must allow billingreports.amazonaws.com to write in your S3 Bucket
+   Create the JSON policy file
+   Save this as billingreports-policy.json (you can adjust bucket name if needed):
+
+{
+  "Effect": "Allow",
+  "Principal": {
+    "Service": "billingreports.amazonaws.com"
+  },
+  "Action": "s3:PutObject",
+  "Resource": "arn:aws:s3:::my-billing-main/billing/*"
+}
+
+ 2. Run AWS CLI to apply the policy
+  aws s3api put-bucket-policy \
+  --bucket rts-route53-billing-main \
+  --policy file://billingreports-policy.json
+
+ 3. (Optional) Verify policy is applied
+  aws s3api get-bucket-policy \
+  --bucket my-route53-billing-main \
+  --query Policy --output text
