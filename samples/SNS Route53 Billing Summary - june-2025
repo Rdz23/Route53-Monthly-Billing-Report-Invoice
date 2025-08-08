@@ -1,0 +1,11 @@
+Route53 Monthly Billing Summary for June 2025 is avaiable
+
+The summary report has been uploaded to S3:
+✅ s3://my-route53-billing-main/route53_invoice_summary/route53_invoice_summary_june-2025.csv
+
+Invoice ID: HKIN25-12345
+
+Preview:
+InvoiceID,Operation,DomainName,PurchaseDate,Cost
+HKIN25-12345,RENEWDOMAIN,Rinance.com,2025-06-13,14.00
+HKIN25-12345,RENEWDOMAIN,Rgnita.com,2025-06-25,15.00
