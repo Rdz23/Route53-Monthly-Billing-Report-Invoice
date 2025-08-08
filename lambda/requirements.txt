@@ -21,3 +21,27 @@ Additional tips:
   aws s3api get-bucket-policy \
   --bucket my-route53-billing-main \
   --query Policy --output text
+
+ 4. Request for CUR (Cost and Usage Report) and 
+     create  "put-report-definition " request and wait for 12-24 hrs to reflect the request.
+
+ aws cur put-report-definition \
+  --report-definition file://Route53-CUR-Definition.json \
+  --region us-east-1
+
+  5. Created Json (Route53-CUR-Definition.json) look like this :
+
+{
+  "ReportName": "my-cur-report",
+  "TimeUnit": "DAILY",
+  "Format": "textORcsv",
+  "Compression": "GZIP",
+  "AdditionalSchemaElements": ["RESOURCES"],
+  "S3Bucket": "my-billing-main",
+  "S3Prefix": "billing",
+  "S3Region": "ap-southeast-1",
+  "ReportVersioning": "OVERWRITE_REPORT"
+}
+
+6. Check existing Report Definition and check the s3 bucket://my-billing-main/billing/
+    aws cur describe-report-definitions --region us-east-1
