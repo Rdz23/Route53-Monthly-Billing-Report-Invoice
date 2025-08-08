@@ -1,1 +1,15 @@
+1. EventBridge Schedule
 aws events put-rule --name route53-monthly-summary-schedule --schedule-expression "cron(0 7 5 * ? *)" --region ap-southeast-1
+
+2. Add a target Lambda function:
+  aws events put-targets \
+  --rule route53-monthly-summary-schedule \
+  --targets "Id"="1","Arn"="arn:aws:lambda:ap-southeast-1:886679765175:function:route53-invoice-summary"
+
+3. Add Lambda permission to allow EventBridge to invoke it:
+   aws lambda add-permission \
+  --function-name route53-invoice-summary \
+  --statement-id allow-eventbridge-schedule \
+  --action 'lambda:InvokeFunction' \
+  --principal events.amazonaws.com \
+  --source-arn arn:aws:events:ap-southeast-1:886679765175:rule/route53-monthly-summary-schedule
