@@ -1,0 +1,3 @@
+InvoiceID,Operation,DomainName,PurchaseDate,Cost
+HKIN25-12345,RENEWDOMAIN,Rahfin.com,2025-06-13,14.00
+HKIN25-12345,RENEWDOMAIN,Rgnita.com,2025-06-25,15.00
