@@ -10,7 +10,7 @@ from datetime import datetime, timedelta
 S3_BUCKET = "my-route53-billing-main"
 REPORT_PREFIX = "billing/my-cur-report"
 SUMMARY_PREFIX = "route53_invoice_summary"
-SNS_TOPIC_ARN = "arn:aws:sns:ap-southeast-1:886679765175:route53-billing-report"
+SNS_TOPIC_ARN = "arn:aws:sns:ap-southeast-1:<ACCOUNT#>:route53-billing-report"
 
 s3 = boto3.client('s3')
 sns = boto3.client('sns')
